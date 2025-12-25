@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Весела Коледа, Лени ❤️</title>
+    
+    <!-- Elegant fonts supporting Cyrillic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Marck+Script&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --warm-red: #a63d40;
+            --soft-red: #d4a5a5;
+            --forest-green: #3d5a47;
+            --sage-green: #7a9e7e;
+            --cream: #f5efe6;
+            --warm-beige: #e8dfd0;
+            --gold-accent: #c9a96e;
+            --gold-light: #e5d4a9;
+            --text-dark: #3a3530;
+            --card-shadow: rgba(58, 53, 48, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            min-height: 100vh;
+            background: linear-gradient(
+                160deg,
+                #f5efe6 0%,
+                #e8dfd0 30%,
+                #f0e6d8 60%,
+                #e5dcd0 100%
+            );
+            color: var(--text-dark);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Subtle texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Snowfall container */
+        .snowfall {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            animation: fall linear infinite;
+            opacity: 0;
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Generate snowflakes with different properties */
+        .snowflake:nth-child(1) { left: 5%; animation-duration: 12s; animation-delay: 0s; width: 6px; height: 6px; }
+        .snowflake:nth-child(2) { left: 15%; animation-duration: 15s; animation-delay: 2s; width: 4px; height: 4px; }
+        .snowflake:nth-child(3) { left: 25%; animation-duration: 10s; animation-delay: 4s; width: 7px; height: 7px; }
+        .snowflake:nth-child(4) { left: 35%; animation-duration: 14s; animation-delay: 1s; width: 5px; height: 5px; }
+        .snowflake:nth-child(5) { left: 45%; animation-duration: 11s; animation-delay: 3s; width: 8px; height: 8px; }
+        .snowflake:nth-child(6) { left: 55%; animation-duration: 13s; animation-delay: 5s; width: 4px; height: 4px; }
+        .snowflake:nth-child(7) { left: 65%; animation-duration: 16s; animation-delay: 0.5s; width: 6px; height: 6px; }
+        .snowflake:nth-child(8) { left: 75%; animation-duration: 9s; animation-delay: 2.5s; width: 5px; height: 5px; }
+        .snowflake:nth-child(9) { left: 85%; animation-duration: 12s; animation-delay: 4.5s; width: 7px; height: 7px; }
+        .snowflake:nth-child(10) { left: 95%; animation-duration: 14s; animation-delay: 1.5s; width: 4px; height: 4px; }
+        .snowflake:nth-child(11) { left: 10%; animation-duration: 17s; animation-delay: 6s; width: 5px; height: 5px; }
+        .snowflake:nth-child(12) { left: 30%; animation-duration: 11s; animation-delay: 7s; width: 6px; height: 6px; }
+        .snowflake:nth-child(13) { left: 50%; animation-duration: 13s; animation-delay: 3.5s; width: 4px; height: 4px; }
+        .snowflake:nth-child(14) { left: 70%; animation-duration: 15s; animation-delay: 5.5s; width: 7px; height: 7px; }
+        .snowflake:nth-child(15) { left: 90%; animation-duration: 10s; animation-delay: 8s; width: 5px; height: 5px; }
+        .snowflake:nth-child(16) { left: 20%; animation-duration: 14s; animation-delay: 9s; width: 6px; height: 6px; }
+        .snowflake:nth-child(17) { left: 40%; animation-duration: 12s; animation-delay: 6.5s; width: 4px; height: 4px; }
+        .snowflake:nth-child(18) { left: 60%; animation-duration: 16s; animation-delay: 7.5s; width: 5px; height: 5px; }
+        .snowflake:nth-child(19) { left: 80%; animation-duration: 11s; animation-delay: 8.5s; width: 7px; height: 7px; }
+        .snowflake:nth-child(20) { left: 2%; animation-duration: 13s; animation-delay: 10s; width: 4px; height: 4px; }
+        
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        header h1 {
+            font-family: 'Marck Script', cursive;
+            font-size: clamp(2rem, 6vw, 3.2rem);
+            color: var(--warm-red);
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(166, 61, 64, 0.1);
+        }
+        
+        /* Counter */
+        .counter {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--forest-green);
+            margin-bottom: 30px;
+            text-align: center;
+            opacity: 0.9;
+        }
+        
+        /* Doors grid */
+        .doors-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 600px;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        
+        /* Individual door wrapper */
+        .door-wrapper {
+            perspective: 1000px;
+            aspect-ratio: 3 / 5;
+        }
+        
+        /* Door card */
+        .door {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .door.opened {
+            transform: rotateY(180deg);
+            cursor: default;
+        }
+        
+        .door-front,
+        .door-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        /* Door front - envelope/card style */
+        .door-front {
+            background: linear-gradient(145deg, var(--cream) 0%, var(--warm-beige) 100%);
+            border: 2px solid var(--gold-light);
+            box-shadow: 
+                0 4px 15px var(--card-shadow),
+                inset 0 0 30px rgba(201, 169, 110, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        
+        .door:not(.opened):hover .door-front {
+            box-shadow: 
+                0 8px 25px var(--card-shadow),
+                inset 0 0 30px rgba(201, 169, 110, 0.15);
+        }
+        
+        /* Envelope flap decoration */
+        .door-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 45%;
+            background: linear-gradient(
+                to bottom right,
+                transparent 49%,
+                var(--gold-light) 49%,
+                var(--gold-light) 51%,
+                transparent 51%
+            ),
+            linear-gradient(
+                to bottom left,
+                transparent 49%,
+                var(--gold-light) 49%,
+                var(--gold-light) 51%,
+                transparent 51%
+            );
+            background-size: 51% 100%, 51% 100%;
+            background-position: left, right;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+        }
+        
+        /* Wax seal decoration */
+        .seal {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 30% 30%, var(--warm-red) 0%, #8b2f31 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 3px 8px rgba(139, 47, 49, 0.4),
+                inset 0 2px 4px rgba(255, 255, 255, 0.2);
+            z-index: 1;
+            position: relative;
+        }
+        
+        .seal::after {
+            content: '❄';
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        /* Different seals for variety */
+        .door-wrapper:nth-child(2) .seal::after { content: '✦'; }
+        .door-wrapper:nth-child(3) .seal::after { content: '♥'; }
+        .door-wrapper:nth-child(4) .seal::after { content: '★'; }
+        
+        /* Door back - content side */
+        .door-back {
+            background: linear-gradient(160deg, #fff 0%, var(--cream) 100%);
+            border: 2px solid var(--sage-green);
+            transform: rotateY(180deg);
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 15px var(--card-shadow);
+        }
+        
+        /* Subtle number on back */
+        .door-number {
+            position: absolute;
+            bottom: 8px;
+            right: 12px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.75rem;
+            color: var(--sage-green);
+            opacity: 0.4;
+        }
+        
+        /* Content styling */
+        .door-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            max-height: 100%;
+            overflow: hidden;
+        }
+        
+        .door-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--warm-red);
+            margin: 0;
+        }
+        
+        .door-content img {
+            max-width: 80%;
+            max-height: 45%;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .door-content p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text-dark);
+            margin: 0;
+        }
+        
+        /* Hide empty elements */
+        .door-content img[src=""],
+        .door-content img:not([src]),
+        .door-content h3:empty,
+        .door-content p:empty {
+            display: none;
+        }
+        
+        /* Final overlay */
+        .final-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(245, 239, 230, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+        
+        .final-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .final-message {
+            text-align: center;
+            padding: 40px;
+            max-width: 500px;
+        }
+        
+        .final-message h2 {
+            font-family: 'Marck Script', cursive;
+            font-size: clamp(2rem, 7vw, 3.5rem);
+            color: var(--warm-red);
+            font-weight: 400;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .final-message p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--forest-green);
+            line-height: 1.6;
+        }
+        
+        .final-message .decorative {
+            margin-top: 30px;
+            font-size: 2rem;
+            color: var(--gold-accent);
+            letter-spacing: 10px;
+        }
+        
+        /* Close button for overlay */
+        .close-button {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: 2px solid var(--warm-red);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--warm-red);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            opacity: 0.7;
+        }
+        
+        .close-button:hover {
+            background: var(--warm-red);
+            color: var(--cream);
+            opacity: 1;
+        }
+        
+        /* Responsive adjustments - tablets */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 15px 50px;
+            }
+            
+            .doors-grid {
+                gap: 20px;
+                max-width: 400px;
+            }
+            
+            .seal {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .seal::after {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Mobile - single column layout */
+        @media (max-width: 480px) {
+            .doors-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                max-width: 300px;
+            }
+            
+            .door-wrapper {
+                aspect-ratio: 3 / 4;
+            }
+            
+            .door-back {
+                padding: 20px 15px;
+            }
+            
+            .door-content p {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            
+            .door-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .seal {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .seal::after {
+                font-size: 1.3rem;
+            }
+            
+            .counter {
+                font-size: 1.1rem;
+            }
+            
+            .close-button {
+                top: 15px;
+                right: 15px;
+                width: 36px;
+                height: 36px;
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* Very small screens */
+        @media (max-width: 350px) {
+            .doors-grid {
+                max-width: 240px;
+                gap: 18px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Decorative holly */
+        .holly {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 10px;
+            font-size: 1.5rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Snowfall effect -->
+    <div class="snowfall">
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Весела Коледа, Лени ❤️</h1>
+            <div class="holly">🌿</div>
+        </header>
+
+        <!-- Counter -->
+        <p class="counter">Остават <span id="remaining">4</span> от 4 изненади</p>
+
+        <!-- Advent Doors Grid -->
+        <div class="doors-grid">
+            
+            <!-- ═══════════════════════════════════════════════════════════════
+                 ВРАТА 1 - Първа изненада
+                 ═══════════════════════════════════════════════════════════════ -->
+            <div class="door-wrapper">
+                <div class="door" data-door="1">
+                    <div class="door-front">
+                        <div class="seal"></div>
+                    </div>
+                    <div class="door-back">
+                        <span class="door-number">1</span>
+                        <div class="door-content">
+                            <h3>За целувките</h3>
+                            
+                            <!-- Снимка за Врата 1 (по желание) - добави src="path/to/image.jpg" -->
+                            <img src="cats_kissing.gif" alt="">
+                            
+                            <!-- Съобщение за Врата 1 - напиши своето съобщение тук -->
+                            <p>Липсват ми целувките ти.
+
+                                Начинът, по който започват
+                                и начинът, по който не искам да свършват.
+                                
+                                Ще продължим скоро.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 ВРАТА 2 - Втора изненада
+                 ═══════════════════════════════════════════════════════════════ -->
+            <div class="door-wrapper">
+                <div class="door" data-door="2">
+                    <div class="door-front">
+                        <div class="seal"></div>
+                    </div>
+                    <div class="door-back">
+                        <span class="door-number">2</span>
+                        <div class="door-content">
+                            <!-- Заглавие за Врата 2 (по желание) -->
+                            <h3>За изкуството</h3>
+                            
+                            <!-- Снимка за Врата 2 (по желание) - добави src="path/to/image.jpg" -->
+                            <img src="opera.jpg" alt="">
+                            
+                            <!-- Съобщение за Врата 2 - напиши своето съобщение тук -->
+                            <p>Обичам когато ми разказваш за изкуство.
+                                Начинът, по който страстта ти оживява,
+                                ме кара да искам
+                                да те слушам вечно.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 ВРАТА 3 - Трета изненада
+                 ═══════════════════════════════════════════════════════════════ -->
+            <div class="door-wrapper">
+                <div class="door" data-door="3">
+                    <div class="door-front">
+                        <div class="seal"></div>
+                    </div>
+                    <div class="door-back">
+                        <span class="door-number">3</span>
+                        <div class="door-content">
+                            <!-- Заглавие за Врата 3 (по желание) -->
+                            <h3>За киселото мляко</h3>
+                            
+                            <!-- Снимка за Врата 3 (по желание) - добави src="path/to/image.jpg" -->
+                            <img src="vereq.jpeg" alt="">
+                            
+                            <!-- Съобщение за Врата 3 - напиши своето съобщение тук -->
+                            <p>Може да не сме съгласни
+                                за киселото мляко.
+                                
+                                Но ми харесва,
+                                че можем да спорим за малките неща
+                                и пак да се смеем.
+                                
+                                Това ми стига.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 ВРАТА 4 - Четвърта изненада
+                 ═══════════════════════════════════════════════════════════════ -->
+            <div class="door-wrapper">
+                <div class="door" data-door="4">
+                    <div class="door-front">
+                        <div class="seal"></div>
+                    </div>
+                    <div class="door-back">
+                        <span class="door-number">4</span>
+                        <div class="door-content">
+                            <!-- Заглавие за Врата 4 (по желание) -->
+                            <h3>За вечерите</h3>
+                            
+                            <!-- Снимка за Врата 4 (по желание) - добави src="path/to/image.jpg" -->
+                            <img src="restaurant.jpeg" alt="">
+                            
+                            <!-- Съобщение за Врата 4 - напиши своето съобщение тук -->
+                            <p>Храна, която ни харесва.
+
+                                Разговори, които не свършват.
+                                
+                                Зима навън
+                                и усещането,
+                                че няма по-добро място
+                                от това да си точно тук.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Final overlay when all doors are opened -->
+    <div class="final-overlay" id="finalOverlay">
+        <button class="close-button" id="closeOverlay" aria-label="Затвори">✕</button>
+        <div class="final-message">
+            <h2>Весела Коледа, Лени ❤️</h2>
+            <p>Нямам търпение да се видим пак.</p>
+            <div class="decorative">❄ ✦ ❄</div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const doors = document.querySelectorAll('.door');
+            const remainingSpan = document.getElementById('remaining');
+            const finalOverlay = document.getElementById('finalOverlay');
+            const closeButton = document.getElementById('closeOverlay');
+            const totalDoors = 4;
+            let openedCount = 0;
+
+            function updateCounter() {
+                const remaining = totalDoors - openedCount;
+                remainingSpan.textContent = remaining;
+            }
+
+            function checkAllOpened() {
+                if (openedCount === totalDoors) {
+                    // 15 second delay before showing final message
+                    setTimeout(() => {
+                        finalOverlay.classList.add('visible');
+                    }, 7500);
+                }
+            }
+
+            doors.forEach(door => {
+                door.addEventListener('click', function() {
+                    // Ignore if already opened
+                    if (this.classList.contains('opened')) {
+                        return;
+                    }
+
+                    // Open the door
+                    this.classList.add('opened');
+                    openedCount++;
+
+                    // Update counter
+                    updateCounter();
+
+                    // Check if all doors are opened
+                    checkAllOpened();
+                });
+            });
+
+            // Close button functionality
+            closeButton.addEventListener('click', function() {
+                finalOverlay.classList.remove('visible');
+            });
+        })();
+    </script>
+</body>
+</html>
+
